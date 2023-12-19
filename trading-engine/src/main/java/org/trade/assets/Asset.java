@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigDecimal;
 
+/**
+ * 资产结构
+ */
 public class Asset {
     BigDecimal available;
     BigDecimal frozen;
