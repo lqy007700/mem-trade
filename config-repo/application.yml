@@ -14,8 +14,8 @@ exchange:
     hmac-key: ${EXCHANGE_HMAC_KEY:ChangeThisHmacKey4ExchangeConfig}
     session-timeout: ${EXCHANGE_SESSION_TIMEOUT:P3D}
     api-endpoints:
-      trading-api: ${TRADING_API:http://localhost:8001}
-      trading-engine-api: ${TRADING_ENGINE_API:http://localhost:8002}
+      trading-api: ${TRADING_API:http://127.0.0.1:8001}
+      trading-engine-api: ${TRADING_ENGINE_API:http://127.0.0.1:8002}
 
   # 风控(See RiskControlService):
   risk-control:
@@ -50,15 +50,15 @@ exchange:
     aes-key: ${EXCHANGE_AES_KEY:CryptoExchangeAESRandomSecureKey}
     # 子系统的endpoint设置:
     endpoint:
-      ui: ${UI_ENDPOINT:http://localhost:8000}
-      meta-api: ${META_API_ENDPOINT:http://localhost:8001}
-      wallet-api: ${WALLET_API_ENDPOINT:http://localhost:8901}
-      spots-api: ${SPOTS_API_ENDPOINT:http://localhost:8101}
-      spots-trading-internal-api: ${SPOTS_TRADING_INTERNAL_API_ENDPOINT:http://localhost:8103}
+      ui: ${UI_ENDPOINT:http://127.0.0.1:8000}
+      meta-api: ${META_API_ENDPOINT:http://127.0.0.1:8001}
+      wallet-api: ${WALLET_API_ENDPOINT:http://127.0.0.1:8901}
+      spots-api: ${SPOTS_API_ENDPOINT:http://127.0.0.1:8101}
+      spots-trading-internal-api: ${SPOTS_TRADING_INTERNAL_API_ENDPOINT:http://127.0.0.1:8103}
 
 spring:
   kafka:
-    bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
+    bootstrap-servers: ${KAFKA_SERVERS:127.0.0.1:9092}
     consumer:
       # set consumer group id (blank for auto):
       group-id: ${KAFKA_CONSUMER_GROUP_ID:}
@@ -68,14 +68,14 @@ spring:
 
   # redis configuration:
   redis:
-    host: ${REDIS_HOST:localhost}
+    host: ${REDIS_HOST:127.0.0.1}
     port: ${REDIS_PORT:6379}
     password: ${REDIS_PASSWORD:}
     database: ${REDIS_DATABASE:0}
 
   # datasource:
   datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}/${DB_NAME:exchange}?useSSL=false&allowMultiQueries=true&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1:3309/${DB_NAME:exchange}?useSSL=false&allowMultiQueries=true&useUnicode=true&characterEncoding=utf8
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:password}
     driver-class-name: com.mysql.cj.jdbc.Driver

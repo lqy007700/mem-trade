@@ -1,18 +1,27 @@
 package org.trade.sequencer;
 
-import org.trade.message.event.AbstractEvent;
-import org.trade.messaging.MessageTypes;
-import org.trade.model.trade.EventEntity;
-import org.trade.model.trade.UniqueEventEntity;
-import org.trade.support.AbstractDbService;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import org.trade.message.event.AbstractEvent;
+import org.trade.messaging.MessageTypes;
+import org.trade.model.trade.EventEntity;
+import org.trade.model.trade.UniqueEventEntity;
+import org.trade.support.AbstractDbService;
+
+
+/**
+ * Process events as batch.
+ */
+@Component
+@Transactional(rollbackFor = Throwable.class)
 public class SequenceHandler extends AbstractDbService {
+
     private long lastTimestamp = 0;
 
     /**
